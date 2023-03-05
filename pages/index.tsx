@@ -56,7 +56,7 @@ export default function Home({ newList }: Props) {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-	const basePath = path.join(process.cwd(), '/post');
+	const basePath = path.join(process.cwd(), 'post');
 	const files = (await fs.readdir(basePath)).filter((file) => file.endsWith('.json'));
 	const list = await Promise.all(
 		files.map(async (file) => {

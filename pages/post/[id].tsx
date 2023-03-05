@@ -14,7 +14,7 @@ function Post({ data }: Props) {
 	const theme = useTheme();
 	return (
 		<div css={Main}>
-			<CustomHead title={`${data.category} - ${data.title}`} description={data.summary} url={''} />
+			{data && <CustomHead title={`${data.category} - ${data.title}`} description={data.summary} url={''} />}
 			<header css={Header(theme)}>
 				<p>{data.category}</p>
 				<h1>{data.title}</h1>
@@ -46,7 +46,7 @@ export async function getStaticPaths() {
 	const paths = files.map((file) => ({ params: { id: file.replace(/\.json$/, '') } }));
 	return {
 		paths,
-		fallback: true,
+		fallback: false,
 	};
 }
 
